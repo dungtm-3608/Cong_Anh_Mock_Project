@@ -6,15 +6,33 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  containerClassName?: string;
+  labelClassName?: string;
+  inputClassName?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, leftIcon, rightIcon, className = "", ...rest }, ref) => {
+  (
+    {
+      label,
+      error,
+      leftIcon,
+      rightIcon,
+      className = "",
+      containerClassName = "",
+      labelClassName = "",
+      inputClassName = "",
+      ...rest
+    },
+    ref,
+  ) => {
     return (
-      <div className="w-full">
+      <div className={`w-full ${containerClassName}`}>
         {/* Label */}
         {label && (
-          <label className="block text-xs font-semibold tracking-widest uppercase text-(--color-dark) mb-2">
+          <label
+            className={`mb-2 block text-xs font-semibold tracking-widest uppercase text-(--color-dark) ${labelClassName}`}
+          >
             {label}
           </label>
         )}
@@ -41,6 +59,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ${error ? "border-red-500 focus:border-red-500" : ""}
             ${leftIcon ? "pl-10" : ""}
             ${rightIcon ? "pr-10" : ""}
+            ${inputClassName}
             ${className}
           `}
             {...rest}

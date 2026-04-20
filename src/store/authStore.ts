@@ -6,7 +6,7 @@ import type { User } from "../types/index.ts";
 interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
-  login: (user: User) => void;
+  setUser: (user: User) => void;
   logout: () => void;
   updateUser: (data: Partial<User>) => void;
 }
@@ -17,7 +17,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       isAuthenticated: false,
 
-      login: (user) =>
+      setUser: (user) =>
         set({
           user,
           isAuthenticated: true,

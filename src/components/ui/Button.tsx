@@ -13,6 +13,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+  ariaLabel?: string;
 }
 
 export default function Button({
@@ -25,6 +26,7 @@ export default function Button({
   onClick,
   type = "button",
   className = "",
+  ariaLabel,
 }: ButtonProps) {
   // ── Base styles ──
   const base = `
@@ -84,6 +86,7 @@ export default function Button({
       disabled={disabled || loading}
       onClick={onClick}
       className={classes}
+      aria-label={ariaLabel}
     >
       {loading && (
         <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">

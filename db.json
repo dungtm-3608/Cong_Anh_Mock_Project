@@ -1,24 +1,22 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Admin Wine Shop",
-      "email": "admin@wineshop.com",
+      "id": "1",
+      "name": "Admin Wine House",
+      "email": "admin@sun-asterisk.com",
       "password": "Admin@123",
       "role": "admin",
       "isActive": true,
-      "avatar": "https://i.pravatar.cc/150?img=1",
-      "phone": "0901234567",
+      "phone": "0909000000",
       "addresses": []
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Nguyen Van A",
       "email": "user@gmail.com",
       "password": "User@123",
       "role": "user",
       "isActive": true,
-      "avatar": "https://i.pravatar.cc/150?img=2",
       "phone": "0907654321",
       "addresses": [
         {
@@ -30,20 +28,21 @@
           "isDefault": true
         }
       ]
+    },
+    {
+      "name": "Nguyen Cong Anh",
+      "email": "nguyen.cong.anh@sun-asterisk.com",
+      "password": "Aa@123456",
+      "role": "user",
+      "isActive": true,
+      "phone": "0914455492",
+      "addresses": [],
+      "id": "H_IlZgVS2w8"
     }
-  ],
-  "categories": [
-    { "id": 1, "name": "Rượu Vang", "parentId": null, "slug": "ruou-vang" },
-    { "id": 2, "name": "Vang Đỏ", "parentId": 1, "slug": "vang-do" },
-    { "id": 3, "name": "Vang Trắng", "parentId": 1, "slug": "vang-trang" },
-    { "id": 4, "name": "Vang Hồng", "parentId": 1, "slug": "vang-hong" },
-    { "id": 5, "name": "Rượu Sủi", "parentId": null, "slug": "ruou-sui" },
-    { "id": 6, "name": "Cava", "parentId": 5, "slug": "cava" },
-    { "id": 7, "name": "Sparkling", "parentId": 5, "slug": "sparkling" }
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "La Capra Viognier",
       "slug": "la-capra-viognier",
       "categoryId": 3,
@@ -61,7 +60,7 @@
       "year": 2022
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Torello Raimonda Cabernet Franc",
       "slug": "torello-raimonda-cabernet-franc",
       "categoryId": 2,
@@ -79,7 +78,7 @@
       "year": 2019
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Torello Crisalys 05 Vang Trắng",
       "slug": "torello-crisalys-05",
       "categoryId": 3,
@@ -97,7 +96,7 @@
       "year": 2020
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Torello Dolc Reserva Cava",
       "slug": "torello-dolc-reserva-cava",
       "categoryId": 6,
@@ -115,7 +114,7 @@
       "year": null
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Torello Marc Classic Sparkling",
       "slug": "torello-marc-classic-sparkling",
       "categoryId": 7,
@@ -133,7 +132,7 @@
       "year": null
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Torello Brut Reserva Cava",
       "slug": "torello-brut-reserva-cava",
       "categoryId": 6,
@@ -151,7 +150,7 @@
       "year": null
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Torello Petjades Merlot Rosé",
       "slug": "torello-petjades-merlot-rose",
       "categoryId": 4,
@@ -169,7 +168,7 @@
       "year": 2021
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Camperchi Merlot Toscana 2014",
       "slug": "camperchi-merlot-toscana-2014",
       "categoryId": 2,
@@ -187,7 +186,7 @@
       "year": 2014
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Root: 1 Cabernet Sauvignon Maipo Valley",
       "slug": "root-1-cabernet-sauvignon-maipo",
       "categoryId": 2,
@@ -205,7 +204,7 @@
       "year": 2005
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Il Meridione Primario Puglia 2000",
       "slug": "il-meridione-primario-puglia-2000",
       "categoryId": 2,
@@ -223,7 +222,7 @@
       "year": 2000
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Admit One Cabernet Sauvignon",
       "slug": "admit-one-cabernet-sauvignon",
       "categoryId": 2,
@@ -241,7 +240,7 @@
       "year": 2018
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Que Guapo Gran Blend Argentina",
       "slug": "que-guapo-gran-blend-argentina",
       "categoryId": 2,
@@ -259,7 +258,7 @@
       "year": 2011
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "As It Should Be Riesling",
       "slug": "as-it-should-be-riesling",
       "categoryId": 3,
@@ -277,7 +276,7 @@
       "year": 2007
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Alpataco Sauvignon Blanc Patagonia",
       "slug": "alpataco-sauvignon-blanc-patagonia",
       "categoryId": 3,
@@ -295,39 +294,5 @@
       "year": 2008
     }
   ],
-  "orders": [],
-  "comments": [],
-  "reviews": [],
-  "vouchers": [
-    {
-      "id": 1,
-      "code": "WINE10",
-      "discount": 10,
-      "type": "percent",
-      "minOrder": 1000000,
-      "expiryDate": "2025-12-31",
-      "isActive": true,
-      "description": "Giảm 10% cho đơn từ 1 triệu"
-    },
-    {
-      "id": 2,
-      "code": "GIAM200K",
-      "discount": 200000,
-      "type": "fixed",
-      "minOrder": 2000000,
-      "expiryDate": "2025-12-31",
-      "isActive": true,
-      "description": "Giảm 200k cho đơn từ 2 triệu"
-    },
-    {
-      "id": 3,
-      "code": "NEWUSER",
-      "discount": 15,
-      "type": "percent",
-      "minOrder": 500000,
-      "expiryDate": "2025-12-31",
-      "isActive": true,
-      "description": "Khách hàng mới giảm 15%"
-    }
-  ]
+  "$schema": "./node_modules/json-server/schema.json"
 }
