@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-primary: #c9a047;
+  --color-primary-hover: #b8902e;
+  --color-primary-light: #f5e6c0;
+
+  --color-dark: #1a1a1a;
+  --color-dark-2: #2a2a2a;
+  --color-dark-3: #3a3a3a;
+
+  --color-muted: #888888;
+  --color-border: #e5e5e5;
+  --color-price: #e07b2a;
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+}
