@@ -54,7 +54,7 @@ export default function LoginPage() {
       switchLabel="Đăng ký"
       switchTo="/dang-ky"
     >
-      <section className="border border-(--color-border-soft) bg-white px-6 py-8 shadow-[0_10px_30px_rgba(17,17,17,0.03)] sm:px-8 md:px-12">
+      <section className="border border-border-soft bg-white px-6 py-8 shadow-[0_10px_30px_rgba(17,17,17,0.03)] sm:px-8 md:px-12">
         <div className="max-w-4xl">
           <h2
             className="text-3xl uppercase tracking-[0.14em]"
@@ -62,7 +62,7 @@ export default function LoginPage() {
           >
             Khách hàng đăng nhập
           </h2>
-          <p className="mt-3 text-sm text-(--color-muted)">
+          <p className="mt-3 text-sm text-muted">
             Vui lòng nhập thông tin tài khoản để tiếp tục.
           </p>
 
@@ -112,7 +112,7 @@ export default function LoginPage() {
               </Button>
             </div>
 
-            <p className="text-sm text-(--color-muted)">
+            <p className="text-sm text-muted">
               Chưa có tài khoản?{" "}
               <Link
                 to="/dang-ky"

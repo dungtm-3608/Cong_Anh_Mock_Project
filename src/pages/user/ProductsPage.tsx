@@ -79,13 +79,13 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-(--color-surface)">
+    <div className="min-h-screen bg-surface">
       <SiteHeader />
 
       <main>
         <section className="relative overflow-hidden bg-[linear-gradient(135deg,rgba(10,10,10,0.88),rgba(32,20,10,0.68)),url('/images/products/8.jpg')] bg-cover bg-center text-white">
           <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-            <p className="text-xs uppercase tracking-[0.45em] text-(--color-primary)">
+            <p className="text-xs uppercase tracking-[0.45em] text-primary">
               Wine Collection
             </p>
             <h1
@@ -102,7 +102,7 @@ export default function ProductsPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="grid gap-8 border border-(--color-border-soft) bg-white p-6 shadow-[0_18px_40px_rgba(17,17,17,0.04)] lg:grid-cols-[1.4fr_auto] lg:items-end">
+          <div className="grid gap-8 border border-border-soft bg-white p-6 shadow-[0_18px_40px_rgba(17,17,17,0.04)] lg:grid-cols-[1.4fr_auto] lg:items-end">
             <div>
               <SectionTitle
                 title="Tìm sản phẩm phù hợp"
@@ -116,29 +116,29 @@ export default function ProductsPage() {
               onSubmit={handleSearchSubmit}
               className="flex flex-col gap-3 sm:flex-row"
             >
-              <label className="relative block min-w-[280px]">
+              <label className="relative block min-w-70">
                 <Search
                   size={18}
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-(--color-muted)"
+                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
                 />
                 <input
                   ref={searchInputRef}
                   defaultValue={query}
                   placeholder="Ví dụ: Cabernet, Chile, 2014..."
-                  className="w-full border border-(--color-border) bg-(--color-surface) py-4 pl-12 pr-4 text-sm outline-none transition focus:border-(--color-primary)"
+                  className="w-full border border-border bg-surface py-4 pl-12 pr-4 text-sm outline-none transition focus:border-primary"
                 />
               </label>
-              <button className="bg-(--color-dark) px-8 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-(--color-dark-2)">
+              <button className="bg-dark px-8 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-dark-2">
                 Tìm kiếm
               </button>
             </form>
           </div>
 
-          <div className="mt-10 flex flex-col gap-4 border-b border-(--color-border-soft) pb-5 text-sm text-(--color-muted) sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10 flex flex-col gap-4 border-b border-border-soft pb-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
             <p>{summary}</p>
             <Link
               to="/"
-              className="text-xs font-semibold uppercase tracking-[0.28em] text-(--color-primary)"
+              className="text-xs font-semibold uppercase tracking-[0.28em] text-primary"
             >
               Quay lại trang chủ
             </Link>
@@ -155,7 +155,7 @@ export default function ProductsPage() {
               {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
-                  className="h-[420px] animate-pulse border border-(--color-border-soft) bg-white"
+                  className="h-105 animate-pulse border border-border-soft bg-white"
                 />
               ))}
             </div>
@@ -169,14 +169,14 @@ export default function ProductsPage() {
                 ))}
               </div>
             ) : (
-              <div className="mt-10 border border-(--color-border-soft) bg-white px-6 py-12 text-center">
+              <div className="mt-10 border border-border-soft bg-white px-6 py-12 text-center">
                 <h2
-                  className="text-3xl text-(--color-dark)"
+                  className="text-3xl text-dark"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Không có kết quả
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-(--color-muted)">
+                <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted">
                   Thử từ khóa khác ngắn hơn hoặc tìm theo quốc gia, ví dụ:
                   Argentina, Tây Ban Nha, Cabernet.
                 </p>

@@ -76,7 +76,7 @@ export default function CategoryProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-(--color-surface)">
+    <div className="min-h-screen bg-surface">
       <SiteHeader />
 
       <main>
@@ -87,7 +87,7 @@ export default function CategoryProductsPage() {
           }}
         >
           <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-            <p className="text-xs uppercase tracking-[0.45em] text-(--color-primary)">
+            <p className="text-xs uppercase tracking-[0.45em] text-primary">
               Wine Category
             </p>
             <h1
@@ -103,7 +103,7 @@ export default function CategoryProductsPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="border-b border-(--color-border-soft) pb-5 text-sm text-(--color-muted)">
+          <div className="border-b border-border-soft pb-5 text-sm text-muted">
             <p>{summary}</p>
           </div>
 
@@ -118,7 +118,7 @@ export default function CategoryProductsPage() {
               {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
-                  className="h-[420px] animate-pulse border border-(--color-border-soft) bg-white"
+                  className="h-105 animate-pulse border border-border-soft bg-white"
                 />
               ))}
             </div>
@@ -132,14 +132,14 @@ export default function CategoryProductsPage() {
                 ))}
               </div>
             ) : (
-              <div className="mt-10 border border-(--color-border-soft) bg-white px-6 py-12 text-center">
+              <div className="mt-10 border border-border-soft bg-white px-6 py-12 text-center">
                 <h2
-                  className="text-3xl text-(--color-dark)"
+                  className="text-3xl text-dark"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Không có sản phẩm
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-(--color-muted)">
+                <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted">
                   Quay về danh sách tất cả sản phẩm để khám phá thêm các nhóm
                   rượu khác.
                 </p>

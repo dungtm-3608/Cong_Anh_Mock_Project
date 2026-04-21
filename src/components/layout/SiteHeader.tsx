@@ -52,7 +52,7 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
       <div className="bg-black text-white">
         <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4 sm:px-6 sm:py-6">
           <Link to="/" className="shrink-0">
-            <div className="leading-none text-(--color-primary)">
+            <div className="leading-none text-primary">
               <p
                 className="text-3xl italic tracking-wide sm:text-4xl"
                 style={{ fontFamily: "var(--font-heading)" }}
@@ -70,7 +70,7 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
               <Link
                 key={item.label}
                 to={item.to}
-                className="transition hover:text-(--color-primary)"
+                className="transition hover:text-primary"
               >
                 {item.label}
               </Link>
@@ -80,12 +80,12 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
               <button
                 type="button"
                 onClick={logout}
-                className="cursor-pointer transition hover:text-(--color-primary)"
+                className="cursor-pointer transition hover:text-primary"
               >
                 Đăng xuất
               </button>
             ) : (
-              <Link to="/dang-nhap" className="transition hover:text-(--color-primary)">
+              <Link to="/dang-nhap" className="transition hover:text-primary">
                 Đăng nhập
               </Link>
             )}
@@ -95,7 +95,7 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
             <button
               type="button"
               onClick={toggleMobileMenu}
-              className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-white transition hover:border-(--color-primary) hover:text-(--color-primary)"
+              className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-white transition hover:border-primary hover:text-primary"
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Đóng menu" : "Mở menu"}
             >
@@ -116,7 +116,7 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
                   key={item.label}
                   to={item.to}
                   onClick={closeMobileMenu}
-                  className="border-b border-white/10 px-4 py-4 text-xs uppercase tracking-[0.28em] text-white transition last:border-b-0 hover:bg-white/8 hover:text-(--color-primary)"
+                  className="border-b border-white/10 px-4 py-4 text-xs uppercase tracking-[0.28em] text-white transition last:border-b-0 hover:bg-white/8 hover:text-primary"
                 >
                   {item.label}
                 </Link>
@@ -133,14 +133,14 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
                       logout();
                       closeMobileMenu();
                     }}
-                    className="w-fit text-left text-(--color-primary)"
+                    className="w-fit text-left text-primary"
                   >
                     Đăng xuất
                   </button>
                 </>
               ) : (
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/dang-nhap" onClick={closeMobileMenu} className="text-(--color-primary)">
+                  <Link to="/dang-nhap" onClick={closeMobileMenu} className="text-primary">
                     Đăng nhập
                   </Link>
                 </div>
@@ -151,7 +151,7 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
       </div>
 
       {showMegaMenu && (
-        <div className="border-b border-(--color-border-soft) bg-white">
+        <div className="border-b border-border-soft bg-white">
           <div className="mx-auto grid max-w-6xl gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[180px_1fr]">
             <div className="hidden items-start justify-center lg:flex">
               <div className="relative">
@@ -160,17 +160,17 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
                   alt="Grapes"
                   className="h-32 w-20 object-cover shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
                 />
-                <div className="absolute -bottom-3 -left-3 h-16 w-16 border border-(--color-primary)/30" />
+                <div className="absolute -bottom-3 -left-3 h-16 w-16 border border-primary/30" />
               </div>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[1fr_1fr_1fr_240px]">
               {megaMenuColumns.map((column) => (
                 <div key={column.title}>
-                  <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-(--color-dark)">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-dark">
                     {column.title}
                   </h3>
-                  <div className="mt-4 space-y-2 text-[11px] uppercase tracking-[0.14em] text-(--color-muted)">
+                  <div className="mt-4 space-y-2 text-[11px] uppercase tracking-[0.14em] text-muted">
                     {column.links.map((link) => (
                       <p key={link}>{link}</p>
                     ))}
@@ -178,14 +178,14 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
                 </div>
               ))}
 
-              <div className="overflow-hidden border border-(--color-border-soft)">
+              <div className="overflow-hidden border border-border-soft">
                 <img
                   src="/images/products/12.jpg"
                   alt="Featured vineyard"
                   className="h-28 w-full object-cover"
                 />
                 <div className="p-4">
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-(--color-primary)">
+                  <p className="text-[10px] uppercase tracking-[0.28em] text-primary">
                     Wine Selection
                   </p>
                   <p

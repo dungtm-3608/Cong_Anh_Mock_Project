@@ -70,7 +70,7 @@ export default function RegisterPage() {
       switchLabel="Đăng nhập"
       switchTo="/dang-nhap"
     >
-      <section className="border border-(--color-border-soft) bg-white px-6 py-8 shadow-[0_10px_30px_rgba(17,17,17,0.03)] sm:px-8 md:px-12">
+      <section className="border border-border-soft bg-white px-6 py-8 shadow-[0_10px_30px_rgba(17,17,17,0.03)] sm:px-8 md:px-12">
         <form onSubmit={onSubmit} className="max-w-4xl">
           <div>
             <h2
@@ -154,7 +154,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <p className="mt-5 text-sm text-(--color-muted)">
+          <p className="mt-5 text-sm text-muted">
             Điền đầy đủ thông tin để tạo tài khoản mới.
           </p>
 

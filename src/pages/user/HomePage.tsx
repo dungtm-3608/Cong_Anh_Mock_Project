@@ -129,7 +129,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-(--color-surface)">
+    <div className="min-h-screen bg-surface">
       <SiteHeader />
 
       <main>
@@ -142,9 +142,9 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_34%)]" />
 
-          <div className="relative mx-auto grid min-h-[680px] max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="relative mx-auto grid min-h-170 max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
-              <p className="text-xs uppercase tracking-[0.5em] text-(--color-primary)">
+              <p className="text-xs uppercase tracking-[0.5em] text-primary">
                 {activeHero.eyebrow}
               </p>
               <h1
@@ -152,7 +152,7 @@ export default function HomePage() {
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 {activeHero.titleTop}
-                <span className="block text-(--color-primary)">
+                <span className="block text-primary">
                   {activeHero.titleAccent}
                 </span>
               </h1>
@@ -163,7 +163,7 @@ export default function HomePage() {
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
                   to={activeHero.href}
-                  className="inline-flex items-center gap-2 bg-(--color-primary) px-8 py-4 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-(--color-primary-hover)"
+                  className="inline-flex items-center gap-2 bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-primary-hover"
                 >
                   Xem category
                   <ArrowRight size={16} />
@@ -175,7 +175,7 @@ export default function HomePage() {
                   <button
                     type="button"
                     onClick={showPreviousHero}
-                    className="inline-flex h-11 w-11 items-center justify-center border border-white/20 bg-white/10 transition hover:border-(--color-primary) hover:text-(--color-primary)"
+                    className="inline-flex h-11 w-11 items-center justify-center border border-white/20 bg-white/10 transition hover:border-primary hover:text-primary"
                     aria-label="Banner trước"
                   >
                     <ArrowLeft size={18} />
@@ -183,7 +183,7 @@ export default function HomePage() {
                   <button
                     type="button"
                     onClick={showNextHero}
-                    className="inline-flex h-11 w-11 items-center justify-center border border-white/20 bg-white/10 transition hover:border-(--color-primary) hover:text-(--color-primary)"
+                    className="inline-flex h-11 w-11 items-center justify-center border border-white/20 bg-white/10 transition hover:border-primary hover:text-primary"
                     aria-label="Banner tiếp theo"
                   >
                     <ArrowRight size={18} />
@@ -202,7 +202,7 @@ export default function HomePage() {
                       <span
                         className={`h-px transition-all ${
                           index === activeHeroIndex
-                            ? "w-10 bg-(--color-primary)"
+                            ? "w-10 bg-primary"
                             : "w-6 bg-white/35 group-hover:bg-white/60"
                         }`}
                       />
@@ -226,10 +226,10 @@ export default function HomePage() {
                 <img
                   src={activeHero.bottleImage}
                   alt={activeHero.bottleName}
-                  className="h-[460px] w-full object-contain transition duration-500"
+                  className="h-115 w-full object-contain transition duration-500"
                 />
                 <div className="mt-4 border-t border-white/10 pt-4">
-                  <p className="text-[10px] uppercase tracking-[0.36em] text-(--color-primary)">
+                  <p className="text-[10px] uppercase tracking-[0.36em] text-primary">
                     Featured bottle
                   </p>
                   <p
@@ -261,7 +261,7 @@ export default function HomePage() {
                 subtitle="Bộ sưu tập mới lấy cảm hứng từ mẫu winery cổ điển: hero lớn, khoảng thở rộng, sản phẩm nổi bật và lối duyệt đơn giản hơn cho người dùng."
                 center={false}
               />
-              <p className="max-w-3xl text-sm leading-8 text-(--color-muted)">
+              <p className="max-w-3xl text-sm leading-8 text-muted">
                 {user
                   ? `Hiện bạn đang đăng nhập với ${user.email}. Bạn có thể chuyển thẳng sang danh sách sản phẩm để xem toàn bộ catalogue hoặc mở chi tiết từng chai.`
                   : "Trang chủ mới ưu tiên trải nghiệm khám phá rượu. Từ đây người dùng có thể vào danh sách tất cả sản phẩm, tìm kiếm nhanh và xem chi tiết từng chai chỉ với một lần click."}
@@ -269,7 +269,7 @@ export default function HomePage() {
 
               <Link
                 to="/san-pham"
-                className="mt-8 inline-flex items-center gap-2 bg-(--color-dark) px-7 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-(--color-dark-2)"
+                className="mt-8 inline-flex items-center gap-2 bg-dark px-7 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-dark-2"
               >
                 Xem thêm
                 <MoveRight size={16} />
@@ -285,30 +285,30 @@ export default function HomePage() {
                 <img
                   src="/images/products/14.jpg"
                   alt="Alpataco Sauvignon Blanc Patagonia"
-                  className="h-[420px] w-full object-contain"
+                  className="h-105 w-full object-contain"
                 />
               </div>
 
               <div className="self-center">
-                <p className="text-[10px] uppercase tracking-[0.35em] text-(--color-primary)">
+                <p className="text-[10px] uppercase tracking-[0.35em] text-primary">
                   Chai nổi bật
                 </p>
                 <h2
-                  className="mt-4 text-5xl leading-none text-(--color-dark)"
+                  className="mt-4 text-5xl leading-none text-dark"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Sauvignon Blanc Patagonia
                 </h2>
-                <p className="mt-6 text-3xl font-semibold text-(--color-price)">
+                <p className="mt-6 text-3xl font-semibold text-price">
                   550.000đ
                 </p>
-                <p className="mt-6 text-sm leading-8 text-(--color-muted)">
+                <p className="mt-6 text-sm leading-8 text-muted">
                   Vang trắng phong cách mát lạnh với hương chanh leo, bưởi và
                   thảo mộc xanh. Section này tái hiện khối sản phẩm nổi của
                   design mẫu, nhưng dùng ảnh thật đang có trong project để giữ
                   trải nghiệm đồng nhất.
                 </p>
-                <div className="mt-8 grid gap-px overflow-hidden border border-(--color-border-soft) bg-(--color-border-soft) sm:grid-cols-2">
+                <div className="mt-8 grid gap-px overflow-hidden border border-border-soft bg-border-soft sm:grid-cols-2">
                   {[
                     { label: "334", value: "Ngày" },
                     { label: "26", value: "Giải" },
@@ -319,10 +319,10 @@ export default function HomePage() {
                       key={item.label}
                       className="bg-white px-5 py-6 text-center"
                     >
-                      <p className="text-3xl text-(--color-primary)">
+                      <p className="text-3xl text-primary">
                         {item.label}
                       </p>
-                      <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-(--color-muted)">
+                      <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-muted">
                         {item.value}
                       </p>
                     </div>
