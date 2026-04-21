@@ -24,7 +24,8 @@ export async function signIn(payload: LoginPayload) {
   });
 
   const user = response.data.find(
-    (item) => item.email.toLowerCase() === email && item.password === payload.password,
+    (item) =>
+      item.email.toLowerCase() === email && item.password === payload.password,
   );
 
   if (!user) {

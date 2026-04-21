@@ -18,3 +18,22 @@ export interface User {
   phone?: string;
   addresses: Address[];
 }
+
+export interface Product {
+  id: string;
+  name: string;
+  slug: string;
+  categoryId: number;
+  price: number;
+  originalPrice?: number | null;
+  description: string;
+  images: string[];
+  stock: number;
+  rating: number;
+  reviewCount: number;
+  tags: string[];
+  country: string;
+  alcohol: string;
+  volume: string;
+  year?: number | null;
+}

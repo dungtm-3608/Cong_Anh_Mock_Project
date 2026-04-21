@@ -17,8 +17,7 @@ interface RegisterFormValues {
   confirmPassword: string;
 }
 
-const passwordPattern =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
 
 export default function RegisterPage() {
   const navigate = useNavigate();

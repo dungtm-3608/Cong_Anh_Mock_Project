@@ -114,7 +114,10 @@ export default function LoginPage() {
 
             <p className="text-sm text-(--color-muted)">
               Chưa có tài khoản?{" "}
-              <Link to="/dang-ky" className="text-black underline underline-offset-4">
+              <Link
+                to="/dang-ky"
+                className="text-black underline underline-offset-4"
+              >
                 Đăng ký ngay
               </Link>
             </p>

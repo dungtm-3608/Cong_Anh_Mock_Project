@@ -1,21 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useAuthStore } from "../../store/authStore";
 
 interface SiteHeaderProps {
   showMegaMenu?: boolean;
 }
 
-const topLinks = ["Bộ sưu tập mới", "Ưu đãi thành viên", "Tin tức rượu vang"];
-
 const mainNav = [
   { label: "Trang chủ", to: "/" },
-  { label: "Rượu vang đỏ" },
-  { label: "Rượu trắng" },
-  { label: "Champagne" },
-  { label: "Thông tin" },
-  { label: "Blog" },
-  { label: "Liên hệ" },
+  { label: "Tất cả sản phẩm", to: "/san-pham" },
+  { label: "Rượu vang đỏ", to: "/danh-muc/vang-do" },
+  { label: "Rượu trắng", to: "/danh-muc/vang-trang" },
+  { label: "Champagne", to: "/danh-muc/champagne" },
 ];
 
 const megaMenuColumns = [
@@ -40,58 +37,29 @@ const megaMenuColumns = [
 export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  function toggleMobileMenu() {
+    setIsMobileMenuOpen((currentState) => !currentState);
+  }
+
+  function closeMobileMenu() {
+    setIsMobileMenuOpen(false);
+  }
 
   return (
     <header>
-      <div className="border-b border-(--color-border-soft) bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 text-[10px] uppercase tracking-[0.24em] text-(--color-muted) sm:px-6">
-          <div className="hidden flex-wrap items-center gap-3 md:flex">
-            {topLinks.map((item) => (
-              <span key={item} className="flex items-center gap-3">
-                <span>{item}</span>
-                <span className="last:hidden text-(--color-border)">|</span>
-              </span>
-            ))}
-            {user ? (
-              <>
-                <span className="text-(--color-dark)">Xin chào, {user.name}</span>
-                <button
-                  onClick={logout}
-                  className="text-(--color-dark) transition hover:text-black"
-                >
-                  Đăng xuất
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/dang-nhap" className="text-(--color-dark)">
-                  Đăng nhập
-                </Link>
-                <Link to="/dang-ky" className="text-(--color-dark)">
-                  Đăng ký
-                </Link>
-              </>
-            )}
-          </div>
-
-          <div className="ml-auto flex items-center gap-2">
-            <span className="hidden sm:inline">Tìm kiếm ở đây...</span>
-            <Search size={12} />
-          </div>
-        </div>
-      </div>
-
       <div className="bg-black text-white">
-        <div className="mx-auto flex max-w-6xl items-center gap-10 px-4 py-6 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4 sm:px-6 sm:py-6">
           <Link to="/" className="shrink-0">
             <div className="leading-none text-(--color-primary)">
               <p
-                className="text-4xl italic tracking-wide"
+                className="text-3xl italic tracking-wide sm:text-4xl"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Wine house
               </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.5em] text-white/80">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.42em] text-white/80 sm:text-xs sm:tracking-[0.5em]">
                 Since 1980
               </p>
             </div>
@@ -99,24 +67,86 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
 
           <nav className="hidden flex-1 items-center justify-center gap-7 text-[11px] uppercase tracking-[0.28em] lg:flex">
             {mainNav.map((item) => (
-              item.to ? (
+              <Link
+                key={item.label}
+                to={item.to}
+                className="transition hover:text-(--color-primary)"
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            {user ? (
+              <button
+                type="button"
+                onClick={logout}
+                className="cursor-pointer transition hover:text-(--color-primary)"
+              >
+                Đăng xuất
+              </button>
+            ) : (
+              <Link to="/dang-nhap" className="transition hover:text-(--color-primary)">
+                Đăng nhập
+              </Link>
+            )}
+          </nav>
+
+          <div className="ml-auto flex items-center gap-2 lg:hidden">
+            <button
+              type="button"
+              onClick={toggleMobileMenu}
+              className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-white transition hover:border-(--color-primary) hover:text-(--color-primary)"
+              aria-expanded={isMobileMenuOpen}
+              aria-label={isMobileMenuOpen ? "Đóng menu" : "Mở menu"}
+            >
+              {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
+        </div>
+
+        <div
+          className={`overflow-hidden border-t border-white/10 transition-all duration-300 lg:hidden ${
+            isMobileMenuOpen ? "max-h-[80vh]" : "max-h-0"
+          }`}
+        >
+          <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+            <nav className="flex flex-col border border-white/10 bg-white/4">
+              {mainNav.map((item) => (
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="transition hover:text-(--color-primary)"
+                  onClick={closeMobileMenu}
+                  className="border-b border-white/10 px-4 py-4 text-xs uppercase tracking-[0.28em] text-white transition last:border-b-0 hover:bg-white/8 hover:text-(--color-primary)"
                 >
                   {item.label}
                 </Link>
+              ))}
+            </nav>
+
+            <div className="mt-4 grid gap-3 border border-white/10 bg-white/4 p-4 text-xs uppercase tracking-[0.24em] text-white/75">
+              {user ? (
+                <>
+                  <span>Xin chào, {user.name}</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logout();
+                      closeMobileMenu();
+                    }}
+                    className="w-fit text-left text-(--color-primary)"
+                  >
+                    Đăng xuất
+                  </button>
+                </>
               ) : (
-                <span
-                  key={item.label}
-                  className="cursor-default transition hover:text-(--color-primary)"
-                >
-                  {item.label}
-                </span>
-              )
-            ))}
-          </nav>
+                <div className="flex flex-wrap gap-4">
+                  <Link to="/dang-nhap" onClick={closeMobileMenu} className="text-(--color-primary)">
+                    Đăng nhập
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
