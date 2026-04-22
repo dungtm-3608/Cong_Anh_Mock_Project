@@ -19,25 +19,25 @@ export default function AuthShell({
   children,
 }: AuthShellProps) {
   return (
-    <div className="min-h-screen bg-[#fbfaf7] text-(--color-dark)">
+    <div className="min-h-screen bg-surface text-dark">
       <SiteHeader />
 
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-[11px] text-(--color-muted)">
-              Trang chủ / <span className="text-(--color-primary)">{crumb}</span>
+            <p className="text-[11px] text-muted">
+              Trang chủ / <span className="text-primary">{crumb}</span>
             </p>
             <h1
-              className="mt-4 text-4xl uppercase tracking-[0.16em] text-(--color-dark)"
+              className="mt-4 text-4xl uppercase tracking-[0.16em] text-dark"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               {title}
             </h1>
-            <div className="mt-3 flex items-center gap-2 text-(--color-dark)">
-              <span className="h-px w-8 bg-(--color-dark)" />
+            <div className="mt-3 flex items-center gap-2 text-dark">
+              <span className="h-px w-8 bg-dark" />
               <span className="text-xs">➜</span>
-              <span className="h-px w-4 bg-(--color-dark)" />
+              <span className="h-px w-4 bg-dark" />
             </div>
           </div>
 

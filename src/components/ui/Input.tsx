@@ -31,7 +31,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {/* Label */}
         {label && (
           <label
-            className={`mb-2 block text-xs font-semibold tracking-widest uppercase text-(--color-dark) ${labelClassName}`}
+            className={`mb-2 block text-xs font-semibold tracking-widest uppercase text-dark ${labelClassName}`}
           >
             {label}
           </label>
@@ -41,7 +41,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <div className="relative">
           {/* Left icon */}
           {leftIcon && (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-(--color-muted)">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted">
               {leftIcon}
             </div>
           )}
@@ -49,13 +49,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={`
-            w-full border border-(--color-border)
-            bg-white text-(--color-dark)
+            w-full border border-border
+            bg-white text-dark
             text-sm px-4 py-3
             outline-none
             transition-all duration-200
-            placeholder:text-(--color-muted)
-            focus:border-(--color-primary)
+            placeholder:text-muted
+            focus:border-primary
             ${error ? "border-red-500 focus:border-red-500" : ""}
             ${leftIcon ? "pl-10" : ""}
             ${rightIcon ? "pr-10" : ""}
@@ -67,7 +67,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
           {/* Right icon */}
           {rightIcon && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-(--color-muted)">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted">
               {rightIcon}
             </div>
           )}
