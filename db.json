@@ -8,7 +8,8 @@
       "role": "admin",
       "isActive": true,
       "phone": "0909000000",
-      "addresses": []
+      "addresses": [],
+      "checkoutProfiles": []
     },
     {
       "id": "2",
@@ -27,6 +28,18 @@
           "city": "Ha Noi",
           "isDefault": true
         }
+      ],
+      "checkoutProfiles": [
+        {
+          "id": "profile-1",
+          "label": "Nhà riêng",
+          "name": "Nguyen Van A",
+          "phone": "0907654321",
+          "address": "123 Nguyen Trai",
+          "city": "Ha Noi",
+          "note": "Giao giờ hành chính",
+          "isDefault": true
+        }
       ]
     },
     {
@@ -37,6 +50,7 @@
       "isActive": true,
       "phone": "0914455492",
       "addresses": [],
+      "checkoutProfiles": [],
       "id": "H_IlZgVS2w8"
     }
   ],
@@ -294,5 +308,42 @@
       "year": 2008
     }
   ],
+  "coupons": [
+    {
+      "id": "coupon-1",
+      "code": "WELCOME10",
+      "label": "Giảm 10%",
+      "description": "Giảm 10% cho đơn từ 1.000.000đ, tối đa 300.000đ.",
+      "type": "percentage",
+      "value": 10,
+      "minOrder": 1000000,
+      "maxDiscount": 300000,
+      "active": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z"
+    },
+    {
+      "id": "coupon-2",
+      "code": "FREESHIP",
+      "label": "Giảm phí giao",
+      "description": "Giảm 40.000đ cho đơn từ 700.000đ.",
+      "type": "fixed",
+      "value": 40000,
+      "minOrder": 700000,
+      "active": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z"
+    },
+    {
+      "id": "coupon-3",
+      "code": "PREMIUM300",
+      "label": "Ưu đãi Premium",
+      "description": "Giảm 300.000đ cho đơn từ 3.000.000đ.",
+      "type": "fixed",
+      "value": 300000,
+      "minOrder": 3000000,
+      "active": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z"
+    }
+  ],
+  "orders": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

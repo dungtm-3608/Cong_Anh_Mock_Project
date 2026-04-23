@@ -1,4 +1,6 @@
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { useCartStore } from "../../store/cartStore";
 import type { Product } from "../../types";
 
 function formatPrice(price: number) {
@@ -23,6 +25,12 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const tag = getTagLabel(product);
+  const addItem = useCartStore((state) => state.addItem);
+
+  function handleAddToCart() {
+    addItem(product.id);
+    toast.success("Đã thêm sản phẩm vào giỏ hàng.");
+  }
 
   return (
     <article className="group flex h-full flex-col overflow-hidden border border-border-soft bg-white shadow-[0_18px_40px_rgba(18,18,18,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(18,18,18,0.1)]">
@@ -69,7 +77,16 @@ export default function ProductCard({ product }: ProductCardProps) {
           ) : null}
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-4 border-t border-border-soft pt-4 text-[10px] uppercase tracking-[0.2em] text-muted">
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          disabled={product.stock <= 0}
+          className="mt-6 inline-flex items-center justify-center gap-2 bg-dark px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-white transition hover:bg-dark-2 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Thêm giỏ
+        </button>
+
+        <div className="mt-5 flex items-center justify-center gap-4 border-t border-border-soft pt-4 text-[10px] uppercase tracking-[0.2em] text-muted">
           <span>{product.volume}</span>
           <span className="h-1 w-1 rounded-full bg-primary" />
           <span>{product.alcohol}</span>

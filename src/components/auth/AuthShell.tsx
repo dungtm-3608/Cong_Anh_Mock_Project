@@ -8,6 +8,7 @@ interface AuthShellProps {
   crumb: string;
   switchLabel: string;
   switchTo: string;
+  switchState?: unknown;
   children: ReactNode;
 }
 
@@ -16,6 +17,7 @@ export default function AuthShell({
   crumb,
   switchLabel,
   switchTo,
+  switchState,
   children,
 }: AuthShellProps) {
   return (
@@ -43,6 +45,7 @@ export default function AuthShell({
 
           <Link
             to={switchTo}
+            state={switchState}
             className="inline-flex items-center justify-center bg-black px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.26em] text-white transition hover:bg-(--color-dark-2)"
           >
             {switchLabel}

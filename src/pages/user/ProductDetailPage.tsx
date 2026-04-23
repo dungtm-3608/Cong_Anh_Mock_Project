@@ -1,5 +1,6 @@
-import { ArrowLeft, Star } from "lucide-react";
+import { ArrowLeft, Minus, Plus, Star } from "lucide-react";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useParams } from "react-router-dom";
 import SiteFooter from "../../components/layout/SiteFooter";
 import SiteHeader from "../../components/layout/SiteHeader";
@@ -7,6 +8,7 @@ import ProductCard from "../../components/product/ProductCard";
 import SectionTitle from "../../components/ui/SectionTitle";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { getFeaturedProducts, getProductBySlug } from "../../services/products";
+import { useCartStore } from "../../store/cartStore";
 import type { Product } from "../../types";
 
 function formatPrice(price: number) {
@@ -15,8 +17,10 @@ function formatPrice(price: number) {
 
 export default function ProductDetailPage() {
   const { slug = "" } = useParams();
+  const addItem = useCartStore((state) => state.addItem);
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -47,6 +51,7 @@ export default function ProductDetailPage() {
         }
 
         setProduct(productData);
+        setQuantity(1);
         setRelatedProducts(
           featured.filter((item) => item.slug !== productData.slug).slice(0, 3),
         );
@@ -69,6 +74,23 @@ export default function ProductDetailPage() {
       active = false;
     };
   }, [slug]);
+
+  function changeQuantity(nextQuantity: number) {
+    if (!product) {
+      return;
+    }
+
+    setQuantity(Math.min(Math.max(1, nextQuantity), product.stock));
+  }
+
+  function handleAddToCart() {
+    if (!product) {
+      return;
+    }
+
+    addItem(product.id, quantity);
+    toast.success("Đã thêm sản phẩm vào giỏ hàng.");
+  }
 
   return (
     <div className="min-h-screen bg-surface">
@@ -168,18 +190,48 @@ export default function ProductDetailPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    to="/san-pham"
-                    className="bg-dark px-7 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-dark-2"
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <div className="inline-flex h-12 w-fit items-center border border-border-soft bg-white">
+                    <button
+                      type="button"
+                      onClick={() => changeQuantity(quantity - 1)}
+                      className="flex h-12 w-12 items-center justify-center text-muted transition hover:text-dark"
+                      aria-label="Giảm số lượng"
+                    >
+                      <Minus size={16} />
+                    </button>
+                    <input
+                      value={quantity}
+                      onChange={(event) =>
+                        changeQuantity(Number(event.target.value) || 1)
+                      }
+                      className="h-12 w-16 border-x border-border-soft text-center text-sm outline-none"
+                      inputMode="numeric"
+                      aria-label="Số lượng"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => changeQuantity(quantity + 1)}
+                      className="flex h-12 w-12 items-center justify-center text-muted transition hover:text-dark"
+                      aria-label="Tăng số lượng"
+                    >
+                      <Plus size={16} />
+                    </button>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleAddToCart}
+                    disabled={product.stock <= 0}
+                    className="inline-flex items-center justify-center gap-2 bg-dark px-7 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-dark-2 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Xem thêm sản phẩm
-                  </Link>
+                    Thêm vào giỏ
+                  </button>
                   <Link
-                    to="/"
+                    to="/gio-hang"
                     className="border border-primary px-7 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-primary transition hover:bg-primary hover:text-white"
                   >
-                    Về trang chủ
+                    Xem giỏ hàng
                   </Link>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
 import AuthShell from "../../components/auth/AuthShell";
 import Button from "../../components/ui/Button";
@@ -21,12 +21,13 @@ const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const setUser = useAuthStore((state) => state.setUser);
   const [submitting, setSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm<RegisterFormValues>({
     defaultValues: {
@@ -38,9 +39,18 @@ export default function RegisterPage() {
     },
   });
 
-  const password = watch("password");
+  const password = useWatch({ control, name: "password" }) ?? "";
 
   useDocumentTitle("Đăng ký");
+
+  const redirectTo =
+    typeof location.state === "object" &&
+    location.state !== null &&
+    "from" in location.state &&
+    typeof location.state.from === "string"
+      ? location.state.from
+      : "/";
+  const redirectState = redirectTo === "/" ? undefined : { from: redirectTo };
 
   const onSubmit = handleSubmit(async (values) => {
     try {
@@ -53,7 +63,7 @@ export default function RegisterPage() {
       });
       setUser(user);
       toast.success("Đăng ký thành công. Tài khoản đã sẵn sàng để sử dụng.");
-      navigate("/", { replace: true });
+      navigate(redirectTo, { replace: true });
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Không thể đăng ký tài khoản.";
@@ -69,6 +79,7 @@ export default function RegisterPage() {
       crumb="Đăng ký"
       switchLabel="Đăng nhập"
       switchTo="/dang-nhap"
+      switchState={redirectState}
     >
       <section className="border border-border-soft bg-white px-6 py-8 shadow-[0_10px_30px_rgba(17,17,17,0.03)] sm:px-8 md:px-12">
         <form onSubmit={onSubmit} className="max-w-4xl">

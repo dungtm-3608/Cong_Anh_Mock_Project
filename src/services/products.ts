@@ -49,6 +49,25 @@ export async function getProductBySlug(slug: string) {
   return response.data[0] ?? null;
 }
 
+export async function getProductsByIds(productIds: string[]) {
+  if (productIds.length === 0) {
+    return [];
+  }
+
+  const products = await getProducts();
+  const selectedIds = new Set(productIds);
+
+  return products.filter((product) => selectedIds.has(product.id));
+}
+
+export async function updateProductStock(productId: string, stock: number) {
+  const response = await api.patch<Product>(`/products/${productId}`, {
+    stock,
+  });
+
+  return response.data;
+}
+
 export async function getProductsByCategory(categorySlug: ProductCategorySlug) {
   const category = getProductCategory(categorySlug);
 

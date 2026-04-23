@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import AuthShell from "../../components/auth/AuthShell";
@@ -16,6 +16,7 @@ interface LoginFormValues {
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const setUser = useAuthStore((state) => state.setUser);
   const [submitting, setSubmitting] = useState(false);
   const {
@@ -31,13 +32,22 @@ export default function LoginPage() {
 
   useDocumentTitle("Đăng nhập");
 
+  const redirectTo =
+    typeof location.state === "object" &&
+    location.state !== null &&
+    "from" in location.state &&
+    typeof location.state.from === "string"
+      ? location.state.from
+      : "/";
+  const redirectState = redirectTo === "/" ? undefined : { from: redirectTo };
+
   const onSubmit = handleSubmit(async (values) => {
     try {
       setSubmitting(true);
       const user = await signIn(values);
       setUser(user);
       toast.success("Đăng nhập thành công.");
-      navigate("/", { replace: true });
+      navigate(redirectTo, { replace: true });
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Không thể đăng nhập.";
@@ -53,6 +63,7 @@ export default function LoginPage() {
       crumb="Đăng nhập"
       switchLabel="Đăng ký"
       switchTo="/dang-ky"
+      switchState={redirectState}
     >
       <section className="border border-border-soft bg-white px-6 py-8 shadow-[0_10px_30px_rgba(17,17,17,0.03)] sm:px-8 md:px-12">
         <div className="max-w-4xl">
@@ -116,6 +127,7 @@ export default function LoginPage() {
               Chưa có tài khoản?{" "}
               <Link
                 to="/dang-ky"
+                state={redirectState}
                 className="text-black underline underline-offset-4"
               >
                 Đăng ký ngay

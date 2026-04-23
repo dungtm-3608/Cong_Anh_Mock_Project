@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useAuthStore } from "../../store/authStore";
+import { useCartStore } from "../../store/cartStore";
 
 interface SiteHeaderProps {
   showMegaMenu?: boolean;
@@ -37,6 +38,9 @@ const megaMenuColumns = [
 export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
+  const cartQuantity = useCartStore((state) =>
+    state.items.reduce((total, item) => total + item.quantity, 0),
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   function toggleMobileMenu() {
@@ -75,6 +79,27 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
                 {item.label}
               </Link>
             ))}
+
+            {user ? (
+              <Link
+                to="/don-hang"
+                className="transition hover:text-primary"
+              >
+                Đơn hàng
+              </Link>
+            ) : null}
+
+            <Link
+              to="/gio-hang"
+              className="inline-flex items-center gap-2 transition hover:text-primary"
+            >
+              Giỏ hàng
+              {cartQuantity > 0 ? (
+                <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] text-white">
+                  {cartQuantity}
+                </span>
+              ) : null}
+            </Link>
 
             {user ? (
               <button
@@ -121,6 +146,27 @@ export default function SiteHeader({ showMegaMenu = false }: SiteHeaderProps) {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                to="/gio-hang"
+                onClick={closeMobileMenu}
+                className="flex items-center justify-between border-b border-white/10 px-4 py-4 text-xs uppercase tracking-[0.28em] text-white transition last:border-b-0 hover:bg-white/8 hover:text-primary"
+              >
+                <span>Giỏ hàng</span>
+                {cartQuantity > 0 ? (
+                  <span className="bg-primary px-2 py-1 text-[10px] text-white">
+                    {cartQuantity}
+                  </span>
+                ) : null}
+              </Link>
+              {user ? (
+                <Link
+                  to="/don-hang"
+                  onClick={closeMobileMenu}
+                  className="border-b border-white/10 px-4 py-4 text-xs uppercase tracking-[0.28em] text-white transition last:border-b-0 hover:bg-white/8 hover:text-primary"
+                >
+                  Đơn hàng
+                </Link>
+              ) : null}
             </nav>
 
             <div className="mt-4 grid gap-3 border border-white/10 bg-white/4 p-4 text-xs uppercase tracking-[0.24em] text-white/75">
